@@ -30,7 +30,7 @@ Os comandos, os requisitos e a conferência com os códigos de referência estã
 
 ## O que não está neste repositório
 
-Os dados dos participantes, isto é, as respostas dos formulários e os arquivos enviados por eles, não estão aqui. O termo de consentimento previu o uso acadêmico dos dados e a identificação apenas pelo número do participante. Esses dados estão disponíveis mediante solicitação ao autor, pelo e-mail ra126609@uem.br.
+Os arquivos enviados pelos participantes, os dados do experimento e as notas de correção por arquivo não estão aqui. O termo de consentimento previu o uso acadêmico dos dados e a identificação apenas pelo número do participante. Esses dados estão disponíveis, em versão anonimizada, mediante solicitação ao autor, pelo e-mail ra126609@uem.br.
 
 ## Licença
 
