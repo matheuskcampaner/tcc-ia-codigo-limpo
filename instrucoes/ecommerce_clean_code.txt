@@ -1,0 +1,28 @@
+Desenvolva uma implementação em Python para um sistema de processamento e checkout de pedidos de um e-commerce com foco absoluto na legibilidade, manutenibilidade e aplicação estrita das diretrizes do Clean Code e dos princípios SOLID, especialmente o Princípio da Responsabilidade Única (SRP) e o Princípio Aberto/Fechado (OCP). 
+ 
+O sistema deve receber os dados de um pedido contendo uma lista de itens (onde cada item possui ID, nome, preço unitário, quantidade desejada e categoria), os dados do cliente (tipo de conta: "COMUM", "VIP" ou "CORPORATIVO"), a região de entrega ("SP", "RJ", "OUTROS") e a opção de pagamento ("Cartão de Crédito", "PIX" ou "Boleto"). 
+ 
+O processamento do pedido deve seguir rigorosamente as regras de negócio abaixo: 
+ 
+1. Validação e Reserva de Estoque: O sistema deve consultar um cadastro de estoque em memória. Se algum item do pedido não possuir saldo suficiente, o processamento deve ser interrompido lançando uma exceção específica informando os itens indisponíveis. 
+2. Taxa por Categoria de Item: Itens da categoria "Eletrônicos" possuem uma taxa adicional fixa de manuseio de R$ 10,00 por unidade. 
+3. Regras de Precificação e Descontos: 
+   - Clientes VIP possuem 10% de desconto automático sobre o subtotal dos produtos. 
+   - Clientes CORPORATIVO possuem 15% de desconto automático sobre o subtotal, mas apenas para pedidos com subtotal superior a R$ 1.000,00. 
+   - Pagamentos via PIX concedem 5% de desconto adicional sobre o valor restante dos produtos após o desconto do cliente. 
+4. Taxa de Frete e Regiões: 
+   - Frete base por região: "SP" (R$ 15,00), "RJ" (R$ 20,00) e "OUTROS" (R$ 35,00). 
+   - Se o valor dos produtos (após descontos) for superior a R$ 300,00, o cliente qualifica para frete gratuito. 
+5. Regra de Não-Cumulatividade e Prevalência: Os descontos de produto/pagamento não são cumulativos com o benefício de frete gratuito. O sistema deve calcular duas alternativas e aplicar automaticamente a que resulte no menor valor total pago pelo cliente: 
+   - Opção A: Aplicar todos os descontos válidos nos produtos e cobrar a taxa de frete integral da região. 
+   - Opção B: Isentar a taxa de frete (R$ 0,00) e manter os produtos pelo valor integral acrescido apenas da taxa de categoria, sem aplicar descontos de cliente ou de PIX. 
+6. Finalização e Atualização: Após definir a opção mais vantajosa e validar as regras, o estoque em memória deve ser atualizado deduzindo os itens comprados. O sistema deve emitir um comprovante estruturado contendo ID do pedido, status (SUCESSO ou FALHA), detalhamento dos valores (subtotal, taxas de categoria, descontos aplicados, frete, opção de benefício selecionada e total final). 
+7. Tratamento de Erros: Tratar exceções customizadas para estoque insuficiente, dados numéricos inválidos (preço ou quantidade <= 0) e formas de pagamento ou regiões não suportadas. 
+ 
+Requisitos Arquiteturais e de Clean Code: 
+- Aplique o Princípio da Responsabilidade Única (SRP): isole a gestão/validação de estoque, as estratégias de cálculo de frete, o cálculo de taxas/descontos e a geração de comprovantes em componentes/classes distintas. 
+- Aplique o Princípio Aberto/Fechado (OCP): utilize polimorfismo, interfaces ou classes abstratas (abstractions/protocols) para os motores de desconto e calculadoras de frete, garantindo que novas regiões, novas categorias de produtos ou novas regras de promoção possam ser adicionadas no futuro criando novos componentes, sem alterar a classe principal de checkout. 
+- Evite o uso de condicionais aninhados complexos e classes gigantes (God Classes). 
+- Utilize obrigatoriamente tipagem estática (Type Hints) e nomes de variáveis, métodos e classes altamente semânticos e expressivos. 
+ 
+Forneça o código completo e um exemplo de uso executável cobrindo tanto o fluxo de sucesso quanto um caso de falha/exceção.

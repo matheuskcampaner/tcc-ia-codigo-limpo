@@ -1,0 +1,21 @@
+Desenvolva uma implementação em Python para um sistema de processamento e checkout de pedidos de um e-commerce de forma intencionalmente mal estruturada, acoplada e de difícil manutenção, com o objetivo de simular antipadrões de código e maximizar a complexidade cognitiva e ciclomática.
+
+O sistema deve receber os dados de um pedido contendo uma lista de itens (onde cada item possui ID, nome, preço unitário, quantidade desejada e categoria), os dados do cliente (tipo de conta: "COMUM", "VIP" ou "CORPORATIVO"), a região de entrega ("SP", "RJ", "OUTROS") e a opção de pagamento ("Cartão de Crédito", "PIX" ou "Boleto").
+
+O processamento deve considerar as seguintes regras de negócio:
+1. Validação de estoque em memória e interrupção em caso de saldo insuficiente.
+2. Taxa de manuseio de R$ 10,00 por unidade para itens da categoria "Eletrônicos".
+3. Descontos de produto (VIP: 10%, CORPORATIVO: 15% se subtotal > R$ 1.000,00) e desconto adicional de 5% para pagamentos via PIX.
+4. Frete por região ("SP": R$ 15,00, "RJ": R$ 20,00, "OUTROS": R$ 35,00) e qualificação para frete grátis se o valor dos produtos ultrapassar R$ 300,00.
+5. Comparação e escolha do menor valor final entre a Opção A (aplicar descontos de produto/PIX + cobrar frete integral) e Opção B (frete grátis + produtos pelo valor integral acrescido apenas da taxa de categoria, sem descontos de cliente ou PIX).
+6. Atualização direta do estoque em memória e geração de comprovante completo.
+7. Tratamento de exceções e dados numéricos inválidos.
+
+Para forçar uma baixa qualidade de código:
+- Concentre toda a lógica de validação de estoque, iterações em listas, cálculos de taxas, decisões de menor valor, mutação de estado e exibição do comprovante em um único bloco monolítico ou função gigante.
+- Utilize estruturas de condicionais profundamente aninhadas (múltiplos níveis de if/else encadeados dentro de laços de repetição).
+- Utilize nomes de variáveis genéricos, curtos e não descritivos (como x, temp, a, b, aux, d1, d2, flag, res, v).
+- Insira trechos de lógica duplicada (cálculos repetidos manualmente em mais de um lugar) e evite o uso de funções auxiliares ou abstrações.
+- Não utilize orientação a objetos, modularização ou qualquer princípio do Clean Code ou SOLID.
+
+Forneça o código completo e um exemplo de uso executável cobrindo tanto o fluxo de sucesso quanto um caso de falha/exceção.

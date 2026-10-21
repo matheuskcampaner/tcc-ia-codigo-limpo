@@ -1,0 +1,28 @@
+Crie uma implementação em Python para um sistema de processamento e checkout de pedidos de um e-commerce.
+
+O sistema deve receber os dados de um pedido contendo uma lista de itens (cada item possui ID, nome, preço unitário, quantidade desejada e categoria), os dados do cliente (tipo de conta como "COMUM", "VIP" ou "CORPORATIVO"), a região de entrega e a opção de pagamento (Cartão de Crédito, PIX ou Boleto).
+
+O processamento do pedido deve seguir as seguintes etapas e regras de negócio:
+
+1. Validação e Reserva de Estoque: O sistema deve consultar um cadastro de estoque simulado em memória. Se algum item do pedido não possuir saldo suficiente, o processamento de todo o pedido deve ser cancelado com uma exceção informando os itens indisponíveis.
+
+2. Taxa por Categoria de Item: Itens da categoria "Eletrônicos" possuem uma taxa adicional fixa de manuseio de R$ 10,00 por unidade.
+
+3. Regras de Precificação e Descontos:
+* Clientes VIP possuem 10% de desconto automático sobre o valor total dos produtos (subtotal).
+* Clientes CORPORATIVO possuem 15% de desconto automático, mas apenas se o valor total dos produtos ultrapassar R$ 1.000,00.
+* Se a forma de pagamento for PIX, aplica-se um desconto adicional de 5% sobre o valor já com os descontos de cliente.
+
+4. Taxa de Frete e Regiões:
+* O frete base é calculado pela região de entrega ("SP": R$ 15,00; "RJ": R$ 20,00; "OUTROS": R$ 35,00).
+* Se o valor dos produtos (após descontos) for superior a R$ 300,00, o cliente qualifica para frete gratuito.
+
+5. Regra de Não-Cumulatividade e Prevalência: Os descontos de produto/pagamento (VIP, CORPORATIVO e PIX) não são cumulativos com o benefício de frete gratuito. O sistema deve calcular duas alternativas e aplicar automaticamente a que resulte no menor valor total pago pelo cliente:
+* Opção A: Aplicar todos os descontos válidos nos produtos e cobrar a taxa de frete integral da região.
+* Opção B: Isentar o valor do frete (frete R$ 0,00) e manter os produtos pelo valor integral com a taxa de categoria, sem aplicar descontos de cliente ou PIX.
+
+6. Finalização e Atualização: Após definir a opção mais vantajosa e validar as regras, a quantidade dos itens comprados deve ser deduzida do estoque em memória. O sistema deve gerar um comprovante estruturado contendo ID do pedido, status (SUCESSO ou FALHA), detalhamento dos valores (subtotal, taxas de categoria, descontos aplicados, valor do frete, opção de benefício selecionada e total final) e mensagem de erro explicativa em caso de falha.
+
+7. Tratamento de Erros: Tratar adequadamente exceções para estoque insuficiente, dados numéricos inválidos (preço ou quantidade menores ou iguais a zero) e formas de pagamento ou regiões não suportadas.
+
+Forneça o código completo e um exemplo de uso executável cobrindo tanto o fluxo de sucesso quanto um caso de falha/exceção.
