@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Se você usar este material, cite-o como indicado abaixo."
+title: "Material de apoio da monografia Avaliação do Uso de Inteligência Artificial Generativa no Apoio à Produção de Código Limpo"
+authors:
+  - family-names: Campaner
+    given-names: Matheus Kochepki
+version: "1.0"
+date-released: 2026-10-20
+license: MIT
+repository-code: "https://github.com/matheuskcampaner/tcc-ia-codigo-limpo"
+keywords:
+  - inteligência artificial generativa
+  - código limpo
+  - manutenibilidade
+  - análise estática
+  - SonarQube
