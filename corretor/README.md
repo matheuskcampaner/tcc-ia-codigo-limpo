@@ -25,6 +25,18 @@ O limite de tempo de `corrigir_arquivo.py` usa `signal.SIGALRM`, que só existe 
 - 1: a regra do professor existe, mas algum caso falha ou o arquivo não executa em algum fluxo.
 - 0: o arquivo não carrega ou não tem parâmetro para o professor.
 
+## Correspondência com o Quadro 6 da monografia
+
+Na lista `CASOS`, os cinco casos `T7-1` a `T7-5` correspondem aos casos T1 a T5 do Quadro 6 da monografia. Os cinco casos `X-crianca12`, `X-idade13`, `X-idade59`, `X-idoso60` e `X-estud-sab` formam o caso X1 (regra antiga), e `X-prof-sab` e `X-prof-idoso` formam o caso X2 (regra nova). O fluxo de emissão do ingresso, que não faz parte da lista `CASOS`, é o caso I.
+
+## Como o corretor chama cada código
+
+Como cada ferramenta de IA estruturou o código de um jeito, `corrigir_arquivo.py` tem um trecho para cada estrutura, que indica como chamar a função de cálculo de preço, e identifica o parâmetro do professor pelo nome.
+
+Nas versões Clean Code do Gemini e do GitHub Copilot, a lista de regras é criada no bloco principal do arquivo (`if __name__ == "__main__"`), que só executa quando o arquivo é rodado diretamente. Por isso, o teste usa o objeto calculador criado por esse bloco no próprio arquivo do aluno, o que também verifica se a nova regra foi registrada na lista.
+
+O caso de um adulto comum em uma quarta-feira foi deixado de fora de propósito: o corretor informa o dia como "Quarta-feira", mas a regra do código gerado pelo Claude Clean Code só reconhece o texto "quarta", e o teste reprovaria o arquivo pela grafia do dia, e não pela regra de preço.
+
 ## Conferência com os códigos de referência
 
 Os códigos de referência estão em `corretor/referencias/`. Os originais se chamam `orig_<familia>.py` e os gabaritos se chamam `<familia>.py`. O nome da família tem a forma `<ferramenta>_p<domínio>_<condição>`. O primeiro número identifica o domínio (1 é o cinema, como em `gemini_p1_2`, e o e-commerce usa 2, como em `chatgpt_p2_1.py` em `codigo_gerado/ecommerce/`). O segundo número é a condição: `1` é o baseline e `2` é o Clean Code. Cada família é também o nome do arquivo gerado. Por exemplo, `gemini_p1_2` é o arquivo `gemini_p1_2.py` em `codigo_gerado/cinema/clean_code/`. Os originais são cópias dos arquivos de `baseline` e `clean_code` em `codigo_gerado/cinema/`, com o prefixo `orig_`.
