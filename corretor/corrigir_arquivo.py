@@ -226,8 +226,9 @@ def estourou_o_tempo(*_):
 
 def main():
     caminho, familia = sys.argv[1], sys.argv[2]
-    signal.signal(signal.SIGALRM, estourou_o_tempo)
-    signal.alarm(LIMITE_SEGUNDOS)
+    if hasattr(signal, 'SIGALRM'):
+        signal.signal(signal.SIGALRM, estourou_o_tempo)
+        signal.alarm(LIMITE_SEGUNDOS)
     resultado = {'load_error': None, 'main_error': None, 'prof_name': None,
                  'tests': {}, 'notes': []}
     ns = carregar(caminho, resultado)
