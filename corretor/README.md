@@ -13,9 +13,9 @@ Scripts usados para corrigir as alterações feitas pelos participantes e medir 
 
 ## Requisitos
 
-Python 3.9 ou superior (por causa de `ast.unparse`) e pandas, usado apenas por `corrigir_turma.py` e `consolidar_tabela.py`. Os scripts foram verificados em Linux com Python 3.13.
+Python 3.9 ou superior (por causa de `ast.unparse`) e pandas, usado apenas por `corrigir_turma.py` e `consolidar_tabela.py`. Os scripts foram verificados em Linux com Python 3.13. Em Windows com Python 3.15.0, foram verificados `corrigir_arquivo.py` e `comparar_ast.py`, com os códigos de referência.
 
-O limite de tempo de `corrigir_arquivo.py` usa `signal.SIGALRM`, que só existe em Linux e macOS. No Windows, use o WSL.
+O limite de 20 segundos de `corrigir_arquivo.py` usa `signal.SIGALRM`, que só existe em Linux e macOS. No Windows, esse limite não é aplicado, e um arquivo com laço infinito ficaria rodando até ser interrompido. `corrigir_turma.py` mantém o limite de 40 segundos por arquivo em qualquer sistema.
 
 `corrigir_arquivo.py` executa o código dos arquivos recebidos. Rode apenas arquivos de confiança, de preferência em um ambiente isolado.
 
