@@ -4,8 +4,8 @@ title: "Material de apoio da monografia Avaliação do Uso de Inteligência Arti
 authors:
   - family-names: Campaner
     given-names: Matheus Kochepki
-version: "1.0"
-date-released: 2026-10-20
+version: "1.0.1"
+date-released: 2026-10-23
 license: MIT
 repository-code: "https://github.com/matheuskcampaner/tcc-ia-codigo-limpo"
 keywords:
